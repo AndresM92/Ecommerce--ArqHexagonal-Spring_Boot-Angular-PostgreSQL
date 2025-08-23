@@ -1,9 +1,11 @@
 package com.andres.ecommerce.backend.infrastructure.config;
 
 import com.andres.ecommerce.backend.application.CategoryService;
+import com.andres.ecommerce.backend.application.OrderService;
 import com.andres.ecommerce.backend.application.ProductService;
 import com.andres.ecommerce.backend.application.UserService;
 import com.andres.ecommerce.backend.domain.port.ICategoryRepository;
+import com.andres.ecommerce.backend.domain.port.IOrderRepository;
 import com.andres.ecommerce.backend.domain.port.IProductRepository;
 import com.andres.ecommerce.backend.domain.port.IUserRepository;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +27,11 @@ public class BeanConfiguration {
     @Bean
     public ProductService productService(IProductRepository iProductRepository){
         return new ProductService(iProductRepository);
+    }
+
+    @Bean
+    public OrderService orderService (IOrderRepository iOrderRepository){
+        return new OrderService(iOrderRepository);
     }
 
 }

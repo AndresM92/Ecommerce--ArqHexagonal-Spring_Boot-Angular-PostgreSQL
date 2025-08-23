@@ -18,11 +18,16 @@ public class OrderService {
         return this.iOrderRepository.findAll();
     }
 
-    public Iterable<Order> findById(Integer userId){
+    public Iterable<Order> findByUserId(Integer userId){
         return this.iOrderRepository.findByUserId(userId);
     }
 
     public void updateStateById(Integer id, String state){
         this.iOrderRepository.updateStateById(id,state);
     }
+
+    public Order findById(Integer id){
+        return this.iOrderRepository.finById(id);
+    }
+
 }
