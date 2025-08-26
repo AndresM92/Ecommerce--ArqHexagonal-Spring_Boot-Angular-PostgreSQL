@@ -1,0 +1,31 @@
+<app-header-admin></app-header-admin>
+<div class="container my-5">
+    <h2 class="mb-4 text-center">Listado de Productos</h2>
+    <button type="button" class="btn btn-success mb-4" [routerLink]="['/admin/product/add_product']" routerLinkActive="router-link-active"  routerLinkActive="router-link-active" >Nuevo Producto</button>
+    <div class="table-responsive">
+        <table class="table table-hover table-striped align-middle text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Codigo</th>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let p of products">
+                <tr>
+                    <td>{{p.code}}</td>
+                    <td><img src="{{p.urlImage}}" alt="Producto 1" style="max-width: 80px; height: 80px;"></td>
+                    <td>{{p.name}}</td>
+                    <td>{{p.description}}</td>
+                    <td class="text-success fw-bold">{{p.price}}</td>
+                    <td><button class="btn btn-sm btn-warning" [routerLink]="['/admin/product/update',p.id]" routerLinkActive="router-link-active" >Editar</button></td>
+                    <td><button class="btn btn-sm btn-danger" (click)="deleteProductById(p.id)">Eliminar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
