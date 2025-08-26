@@ -1,0 +1,26 @@
+<app-header-admin></app-header-admin>
+
+<div class="container">
+    <header class="jumbotron my-4">
+        <h1 class="display-3">Bienvenido a Spring Ecommerce</h1>
+        <p class="lead">Tu tienda de productos en linea</p>
+    </header>
+    <div class="main-content">
+        <div class="section-content section-content-p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div  *ngFor="let p of products" class="col-md-3">
+                        <div class="product-box">
+                            <img src="{{p.urlImage}}" style="max-width: 400px; height: 600px;">
+                            <h2 class="card-text">{{p.name}}</h2>
+                            <div class="price">{{p.price}}</div>
+                            <div class="product-show">
+                                <a href="" class="primary-btn">Ver Producto</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
