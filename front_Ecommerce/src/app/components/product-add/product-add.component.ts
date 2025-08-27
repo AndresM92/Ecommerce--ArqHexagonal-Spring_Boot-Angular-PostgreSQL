@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/common/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -8,74 +9,72 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './product-add.component.html',
   styleUrls: ['./product-add.component.css']
 })
-export class ProductAddComponent  implements OnInit {
+export class ProductAddComponent implements OnInit {
 
-  id:number=0;
-  code:string='254';
-  name:string='';
-  description:string='';
-  price:number=0;
-  urlImage:string='';
-  userId:string='1';
-  categoryId:string='2';
+  product: Product = new Product();
+  selectFile!: File;
+  parametro!: number;
 
-  constructor(private productService:ProductService,private router:Router,private activatedRouter:ActivatedRoute){
-
-  }
+  constructor(private productService: ProductService,
+    private router: Router, private activatedRouter: ActivatedRoute,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getProductById();
   }
 
-  if (id=!0) {
-    
-  }
-  addProduct(){
+  addProduct() {
 
-    if (this.id != 0) {
-      
-    }else{
+    this.product.code = '254';
+    this.product.categoryId = '2';
+    this.product.userId = '1';
 
-    }
-    const formData= new FormData();
-    formData.append('id',this.id.toString());
-    formData.append('code',this.code);
-    formData.append('name',this.name);
-    formData.append('description',this.description);
-    formData.append('price',this.price.toString());
-    formData.append('urlImage',this.urlImage);
-    formData.append('userId',this.userId);
-    formData.append('categoryId',this.categoryId);
-    console.log(formData);
-
-    this.productService.createProduct(formData).subscribe(
-      data=> {
-        console.log(data);
-        this.router.navigate(["admin/product"]);
-      }
-    );
-  }
-
-  getProductById(){
-    this.activatedRouter.params.subscribe(
-      prod=>{
-        let id=prod['id'];
-        if(id){
-        this.productService.getProductById(id).subscribe(
-          data=> {
-            this.id=data.id;
-            this.code=data.code;
-            this.name=data.name;
-            this.description=data.description;
-            this.urlImage=data.urlImage;
-            this.price=data.price;
-            this.userId=data.userId;
-            this.categoryId=data.categoryId;
+    if (this.product.id == null || this.product.id > 0) {
+      const formData = new FormData();
+      formData.append('product', JSON.stringify(this.product));
+      formData.append('img', this.selectFile);
+      this.productService.createProduct(formData).subscribe(
+        () => {
+          if (this.product.id > 0) {
+            this.toastr.success("Producto actualizado", "Producto");
+          } else {
+            this.toastr.success("Producto registrado", "Producto");
           }
-        );
+
+          //alert("Save Successful");
+          this.router.navigate(["admin/product"]);
+        }
+      );
+    }
+  }
+
+  getProductById() {
+    this.activatedRouter.params.subscribe(
+      prod => {
+        this.parametro = prod['id'];
+        if (this.parametro) {
+          this.productService.getProductById(this.parametro).subscribe(
+            data => {
+              this.product.id = data.id;
+              this.product.code = data.code;
+              this.product.name = data.name;
+              this.product.description = data.description;
+              this.product.urlImage = data.urlImage;
+              this.product.price = data.price;
+              this.product.userId = data.userId;
+              this.product.categoryId = data.categoryId;
+            }
+          );
         }
       }
     );
   }
 
+  onFileSelect(event: any) {
+    const input = event.target as HTMLInputElement;
+
+    if (input?.files && input.files.length > 0) {
+      this.selectFile = input.files[0];
+    }
+  }
 }

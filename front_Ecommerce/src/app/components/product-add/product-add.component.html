@@ -4,20 +4,20 @@
     <div class="form-container">
         <h2>Nuevo Producto</h2>
         <form (ngSubmit)="addProduct()">
-            <input type="hidden" [(ngModel)]="id" name="id">
+            <input type="hidden" [(ngModel)]="product.id" name="id">
             <div class="form-group">
                 <label for="name">Nombre del Producto</label>
-                <input [(ngModel)]="name" type="text" id="name" name="name" required />
+                <input [(ngModel)]="product.name" type="text" id="name" name="name" required />
             </div>
 
             <div class="form-group">
                 <label for="description">Descripción</label>
-                <textarea [(ngModel)]="description" id="description" name="description" required></textarea>
+                <textarea [(ngModel)]="product.description" id="description" name="description" required></textarea>
             </div>
 
             <div class="form-group">
                 <label for="price">Precio ($)</label>
-                <input [(ngModel)]="price" type="number" id="price" name="price" min="0" step="0.01" required />
+                <input [(ngModel)]="product.price" type="number" id="price" name="price" min="0" step="0.01" required />
             </div>
 
             <div class="form-group">
@@ -38,7 +38,7 @@
 
             <div class="form-group">
                 <label for="upload_image">Cargar Imagen</label>
-                <input type="file" class="form-control-file" id="upload_image">
+                <input type="file" class="form-control-file" name="img" id="img" (change)="onFileSelect($event)">
             </div>
 
             <div class="form-actions">

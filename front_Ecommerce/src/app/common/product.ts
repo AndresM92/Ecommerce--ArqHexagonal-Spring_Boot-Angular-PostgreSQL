@@ -1,16 +1,13 @@
 export class Product {
 
-    constructor(
-        
-        public id:number,
-        public name:string,
-        public code:string,
-        public description:string,
-        public price:number,
-        public urlImage:string,
-        public image:File,
-        public userId:string,
-        public categoryId:string
+    id!: number;
+    name!: String;
+    code!: String;
+    description!: String;
+    price!: number;
+    urlImage!: String;
+    image!: File;
+    userId!: String;
+    categoryId!: String
 
-    ){}
 }
