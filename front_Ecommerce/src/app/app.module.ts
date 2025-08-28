@@ -9,14 +9,24 @@ import { HeaderAdminComponent } from './components/header-admin/header-admin.com
 import { Routes,RouterModule } from '@angular/router';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { CategoryListComponent } from './components/category/category-list/category-list.component';
+import { CategoryAddComponent } from './components/category/category-add/category-add.component';
+import { DetailProductComponent } from './components/cart/detail-product/detail-product.component';
+import { HeaderUserComponent } from './components/header-user/header-user.component';
+import { SummaryOrderComponent } from './components/orders/summary-order/summary-order.component';
 
 const routes:Routes=[
   {path:'',component:HomeComponent},
   {path:'admin/product',component:ProductListComponent},
   {path:'admin/product/add_product',component:ProductAddComponent},
-  {path:'admin/product/update/:id',component:ProductAddComponent}
+  {path:'admin/product/update/:id',component:ProductAddComponent},
+  {path:'admin/category',component:CategoryListComponent},
+  {path:'admin/category/add_category',component:CategoryAddComponent},
+  {path:'admin/category/update/:id',component:CategoryAddComponent},
+  {path:'cart/detailproduct/:id',component:DetailProductComponent},
+  {path:'cart/summary',component:SummaryOrderComponent}
 ];
 
 @NgModule({
@@ -25,12 +35,18 @@ const routes:Routes=[
     HomeComponent,
     ProductListComponent,
     HeaderAdminComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    CategoryListComponent,
+    CategoryAddComponent,
+    DetailProductComponent,
+    HeaderUserComponent,
+    SummaryOrderComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule, 
     RouterModule.forRoot(routes),

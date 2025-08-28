@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Category } from 'src/app/common/category';
 import { Product } from 'src/app/common/product';
+import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -12,21 +14,22 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductAddComponent implements OnInit {
 
   product: Product = new Product();
+  categories:Category[]=[];
   selectFile!: File;
   parametro!: number;
 
   constructor(private productService: ProductService,
     private router: Router, private activatedRouter: ActivatedRoute,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,private categoryService:CategoryService) { }
 
   ngOnInit(): void {
     this.getProductById();
+    this.getCategories();
   }
 
   addProduct() {
 
-    this.product.code = '254';
-    this.product.categoryId = '2';
+    this.product.code = '257';
     this.product.userId = '1';
 
     if (this.product.id == null || this.product.id > 0) {
@@ -76,5 +79,13 @@ export class ProductAddComponent implements OnInit {
     if (input?.files && input.files.length > 0) {
       this.selectFile = input.files[0];
     }
+  }
+
+  getCategories(){
+
+    return this.categoryService.getCategoryList().subscribe(
+      data=>this.categories=data
+    );
+
   }
 }

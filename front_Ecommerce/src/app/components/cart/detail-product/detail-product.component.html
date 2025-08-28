@@ -1,0 +1,22 @@
+<app-header-admin></app-header-admin>
+
+<div class="product-detail-container">
+  <div class="image-container">
+    <img src="{{product.urlImage}}" alt="Imagen producto" />
+  </div>
+
+  <div class="info-container">
+    <h2>{{ product.name }}</h2>
+    
+    <p><strong>Precio:</strong> ${{ product.price | number:'1.0-0' }}</p>
+    <p><strong>Descripción:</strong> {{ product.description }}</p>
+
+    <div  class="quantity-section">
+      <label for="quantity"><strong>Cantidad:</strong></label>
+      <select id="quantity" [(ngModel)]="quantity">
+        <option *ngFor="let qty of quantities" [value]="qty">{{ qty }}</option>
+      </select>
+    </div>
+    <button class="add-button" (click)="addToCart(product.id)">Añadir al carrito</button>
+  </div>
+</div>
