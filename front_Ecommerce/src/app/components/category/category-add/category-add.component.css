@@ -1,0 +1,26 @@
+/* From Uiverse.io by ercnersoy */ 
+.container{
+  margin-top: 100px;
+}
+
+form {
+  text-align: center;
+}
+
+.input_add {
+ border: none;
+ padding: 1rem;
+ border-radius: 1rem;
+ background: #e8e8e8;
+ box-shadow: 20px 20px 60px #c5c5c5,
+		-10px -10px 30px #ffffff;
+ transition: 0.3s;
+}
+
+.input_add:focus {
+ outline-color: #e8e8e8;
+ background: #e8e8e8;
+ box-shadow: inset 20px 20px 60px #c5c5c5,
+		inset -20px -20px 60px #ffffff;
+ transition: 0.3s;
+}

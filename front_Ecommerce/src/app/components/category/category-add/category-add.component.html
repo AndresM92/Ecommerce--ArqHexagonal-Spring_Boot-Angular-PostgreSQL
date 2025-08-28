@@ -1,0 +1,16 @@
+<app-header-admin></app-header-admin>
+
+<div class="container">
+    <h2 class="mb-4" style="text-align: center;">Crear Categoría</h2>
+    <form [formGroup]="categoryForm" (ngSubmit)="addCategory()">
+        <div>
+            <input type="text" id="name" formControlName="name" class="input_add"
+                placeholder="Nombre de la Categoria" />
+            <div *ngIf="categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched" style="color: red;">
+                <small *ngIf="categoryForm.get('name')?.errors?.['required']">El nombre es obligatorio.</small>
+                <small *ngIf="categoryForm.get('name')?.errors?.['minlength']">Debe Ingresar minimo 2 caracteres.</small>
+            </div>
+        </div>
+        <button class="btn btn-success" type="submit" [disabled]="categoryForm.invalid">Crear</button>
+    </form>
+</div>
