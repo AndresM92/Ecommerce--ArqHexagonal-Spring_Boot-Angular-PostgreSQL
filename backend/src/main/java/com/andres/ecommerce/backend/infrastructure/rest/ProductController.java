@@ -60,11 +60,11 @@ public class ProductController {
         return  new ResponseEntity<>(productService.save(product,img), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    /*@PutMapping("/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable Integer id, @RequestBody Product product, MultipartFile img) throws IOException {
         product.setId(id);
         return ResponseEntity.ok(productService.save(product,img));
-    }
+    }*/
 
     @GetMapping
     public ResponseEntity<Iterable<Product>> findAll(){
