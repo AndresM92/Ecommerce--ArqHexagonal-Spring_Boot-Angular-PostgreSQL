@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("api/v1/payments")
+@RequestMapping("/api/v1/payments")
 @CrossOrigin(origins = "http://localhost:4200")
 public class PaypalController {
     private final PaypalService paypalService;
