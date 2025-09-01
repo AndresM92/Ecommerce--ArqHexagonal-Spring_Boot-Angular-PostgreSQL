@@ -1,0 +1,53 @@
+<app-header-user></app-header-user>
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+
+        <img class="formbold-img" src="assets/img/register.png">
+
+        <form (ngSubmit)="register()">
+            <div class="formbold-form-title">
+
+                <h2 class="">Register now</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt.
+                </p>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <label for="firstname" class="formbold-form-label">Nombre</label>
+                    <input [(ngModel)]="user.firstName" type="text" name="firstname" id="firstname" class="formbold-form-input" />
+                </div>
+                <div>
+                    <label for="lastname" class="formbold-form-label"> Apellido </label>
+                    <input [(ngModel)]="user.lastName" type="text" name="lastname" id="lastname" class="formbold-form-input" />
+                </div>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <label for="email" class="formbold-form-label"> Email </label>
+                    <input [(ngModel)]="user.email" type="email" name="email" id="email" class="formbold-form-input"/>
+                </div>
+
+                <div class="formbold-mb-3">
+                    <label for="address" class="formbold-form-label">Direccion</label>
+                    <input [(ngModel)]="user.address" type="text" name="address" id="address" class="formbold-form-input"/>
+                </div>
+            </div>
+
+            <div>
+                <label for="phone" class="formbold-form-label"> Telefono </label>
+                <input [(ngModel)]="user.cellphone" type="text" name="phone" id="phone" class="formbold-form-input"/>
+            </div>
+
+            <div>
+                <label for="contra" class="formbold-form-label"> Contraseña </label>
+                <input [(ngModel)]="user.password" type="password" name="contra" id="contra" class="formbold-form-input"/>
+            </div>
+
+            <button class="formbold-btn">Register</button>
+        </form>
+    </div>
+</div>
