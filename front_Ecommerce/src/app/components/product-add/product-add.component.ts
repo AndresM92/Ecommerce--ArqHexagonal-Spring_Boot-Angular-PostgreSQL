@@ -5,6 +5,7 @@ import { Category } from 'src/app/common/category';
 import { Product } from 'src/app/common/product';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
+import { SessionStorageService } from 'src/app/services/session-storage.service';
 
 @Component({
   selector: 'app-product-add',
@@ -17,12 +18,16 @@ export class ProductAddComponent implements OnInit {
   categories:Category[]=[];
   selectFile!: File;
   parametro!: number;
+  user:number=0;
 
-  constructor(private productService: ProductService,
+  constructor(
+    private sessionStorageService:SessionStorageService,
+    private productService: ProductService,
     private router: Router, private activatedRouter: ActivatedRoute,
     private toastr: ToastrService,private categoryService:CategoryService) { }
 
   ngOnInit(): void {
+
     this.getProductById();
     this.getCategories();
   }
@@ -30,7 +35,8 @@ export class ProductAddComponent implements OnInit {
   addProduct() {
 
     this.product.code = '257';
-    this.product.userId = '1';
+    this.product.userId=this.sessionStorageService.getItem('token').id.toString();
+    //this.product.userId = '1';
 
     if (this.product.id == null || this.product.id > 0) {
       const formData = new FormData();

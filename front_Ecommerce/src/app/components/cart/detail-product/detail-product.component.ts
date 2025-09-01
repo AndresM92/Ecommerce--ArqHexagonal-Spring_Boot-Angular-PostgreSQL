@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ItemCart } from 'src/app/common/item-cart';
 import { Product } from 'src/app/common/product';
 import { CartService } from 'src/app/services/cart.service';
+import { HomeService } from 'src/app/services/home.service';
 import { ProductService } from 'src/app/services/product.service';
 import Swal from 'sweetalert2';
 
@@ -13,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class DetailProductComponent implements OnInit {
 
-  constructor(private productService: ProductService, private activatedRouter: ActivatedRoute, private router: Router, private cartService: CartService) { }
+  constructor(private homeService: HomeService, private activatedRouter: ActivatedRoute, private router: Router, private cartService: CartService) { }
 
   product: Product = new Product();
   cart: ItemCart = new ItemCart();
@@ -34,6 +35,7 @@ export class DetailProductComponent implements OnInit {
     this.cart.productName = this.product.name;
     this.cart.quantity = this.quantity;
     this.cart.price = this.product.price;
+    this.cart.urlImage = this.product.urlImage;
     this.cartService.addItemCart(this.cart);
 
     Swal.fire({
@@ -52,7 +54,7 @@ export class DetailProductComponent implements OnInit {
       p => {
         this.parametro = p["id"];
         if (this.parametro) {
-          this.productService.getProductById(this.parametro).subscribe(
+          this.homeService.getProductById(this.parametro).subscribe(
             data => {
               this.product.id = data.id,
                 this.product.name = data.name,

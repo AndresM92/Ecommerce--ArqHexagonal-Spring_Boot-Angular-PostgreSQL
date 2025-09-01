@@ -4,6 +4,7 @@ export class ItemCart {
     productName!:String;
     quantity!:number;
     price!:number;
+    urlImage!:String;
 
     getTotalPriceItem(){
         return this.quantity*this.price;
