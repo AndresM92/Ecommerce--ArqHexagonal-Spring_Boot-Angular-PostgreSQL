@@ -1,7 +1,8 @@
+<app-header-user></app-header-user>
 <div class="cart-container">
   <h2>🧍 Información del Usuario</h2>
   <div class="user-info">
-    <p><strong>Nombre:</strong> {{ user.name }}</p>
+    <p><strong>Nombre:</strong> {{ user.firstName }} {{user.lastName}}</p>
     <p><strong>Email:</strong> {{ user.email }}</p>
     <p><strong>Dirección:</strong> {{ user.address }}</p>
   </div>
@@ -9,20 +10,20 @@
   <h2>🛒 Productos en el Carrito</h2>
   <div class="cart-items">
     <div class="cart-item" *ngFor="let i of items">
-      <img [src]="i.urlImage" alt="{{ i.name }}" />
+      <img src="{{i.urlImage}}" alt="{{ i.productName }}" />
       <div class="details">
-        <h4>{{ i.name }}</h4>
+        <h4>{{ i.productName }}</h4>
         <p>Cantidad: {{ i.quantity }}</p>
         <p>Precio unitario: ${{ i.price | number:'1.0-0' }}</p>
         <p>Subtotal: ${{ i.price * i.quantity | number:'1.0-0' }}</p>
-        <button class="btn btn-danger" type="submit">Eliminar Producto</button>
+        <button class="btn btn-danger" (click)="deleteItemCart(i.productId,i.productName)">Eliminar Producto</button>
       </div>
     </div>
   </div>
 
   <div class="total-section">
-    <h3>Total a pagar: ${{ getTotal() | number:'1.0-0' }}</h3>
-    <button (click)="confirmPurchase()">Confirmar compra</button>
+    <h3>Total a pagar: ${{ totalCart | number:'1.0-0' }}</h3>
+    <button (click)="generateOrder()">Confirmar compra</button>
   </div>
 </div>
 
