@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../common/user';
 import { Userdto } from '../common/userdto';
 import { Jwtclient } from '../common/jwtclient';
@@ -10,16 +10,25 @@ import { Jwtclient } from '../common/jwtclient';
 })
 export class AuthenticationService {
 
-  private apiUrl : string = "http://localhost:8085/api/v1/security";
+  private userRole = new BehaviorSubject<string>('guest');
+  private apiUrl: string = "http://localhost:8085/api/v1/security";
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  register(user:User):Observable<User>{
-    return this.httpClient.post<User>(this.apiUrl+"/register",user);
+  setUserRole(role: string) {
+    this.userRole.next(role);
   }
 
-  login(userDto:Userdto):Observable<Jwtclient>{
-    return this.httpClient.post<Jwtclient>(this.apiUrl+"/login",userDto);
+  getUserRole() {
+    return this.userRole.asObservable();
+  }
+
+  register(user: User): Observable<User> {
+    return this.httpClient.post<User>(this.apiUrl + "/register", user);
+  }
+
+  login(userDto: Userdto): Observable<Jwtclient> {
+    return this.httpClient.post<Jwtclient>(this.apiUrl + "/login", userDto);
   }
 
 }

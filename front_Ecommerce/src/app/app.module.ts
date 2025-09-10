@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import { HeaderAdminComponent } from './components/header-admin/header-admin.component';
+import { HeaderAdminComponent } from './components/headers/header-admin/header-admin.component';
 import { Routes,RouterModule } from '@angular/router';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,13 +14,15 @@ import { ToastrModule } from 'ngx-toastr';
 import { CategoryListComponent } from './components/category/category-list/category-list.component';
 import { CategoryAddComponent } from './components/category/category-add/category-add.component';
 import { DetailProductComponent } from './components/cart/detail-product/detail-product.component';
-import { HeaderUserComponent } from './components/header-user/header-user.component';
+import { HeaderUserComponent } from './components/headers/header-user/header-user.component';
 import { SummaryOrderComponent } from './components/orders/summary-order/summary-order.component';
 import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
 import { RegistrationComponent } from './components/authentication/registration/registration.component';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { LogoutComponent } from './components/authentication/logout/logout.component';
 import { authGuard } from './guards/auth.guard';
+import { HeaderContainerComponent } from './components/headers/header-container/header-container.component';
+import { HeaderDefaultComponent } from './components/headers/header-default/header-default.component';
 
 const routes:Routes=[
   {path:'',component:HomeComponent},
@@ -53,7 +55,9 @@ const routes:Routes=[
     PaymentSuccessComponent,
     RegistrationComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    HeaderContainerComponent,
+    HeaderDefaultComponent
   ],
   imports: [
     BrowserModule,

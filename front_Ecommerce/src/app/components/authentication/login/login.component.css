@@ -1,143 +1,84 @@
-/* From Uiverse.io by Smit-Prajapati */ 
-*{
-    margin: 0;
-    padding: 0;
-}
-.container {
-  max-width: 350px;
-  background: #F8F9FD;
-  background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(244, 247, 251) 100%);
-  border-radius: 40px;
-  padding: 25px 35px;
-  border: 5px solid rgb(255, 255, 255);
-  box-shadow: rgba(1, 15, 22, 0.878) 0px 30px 30px -20px;
-  margin: 20px;
-}
-
-.heading {
-  text-align: center;
-  font-weight: 900;
-  font-size: 30px;
-  color: rgb(1, 13, 20);
+/* From Uiverse.io by alexruix */ 
+.form-box {
+  margin-top: 200px;
+  max-width: 500px;
+  background: #f1f7fe;
+  overflow: hidden;
+  border-radius: 16px;
+  color: #010101;
 }
 
 .form {
-  margin-top: 20px;
-}
-
-.form .input {
-  width: 100%;
-  background: white;
-  border: none;
-  padding: 15px 20px;
-  border-radius: 20px;
-  margin-top: 15px;
-  box-shadow: #cff0ff 0px 10px 10px -5px;
-  border-inline: 2px solid transparent;
-}
-
-.form .input::-moz-placeholder {
-  color: rgb(170, 170, 170);
-}
-
-.form .input::placeholder {
-  color: rgb(170, 170, 170);
-}
-
-.form .input:focus {
-  outline: none;
-  border-inline: 2px solid #12B1D1;
-}
-
-.form .forgot-password {
-  display: block;
-  margin-top: 10px;
-  margin-left: 10px;
-}
-
-.form .forgot-password a {
-  font-size: 11px;
-  color: #0099ff;
-  text-decoration: none;
-}
-
-.form .login-button {
-  display: block;
-  width: 100%;
-  font-weight: bold;
-  background: linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%);
-  color: white;
-  padding-block: 15px;
-  margin: 20px auto;
-  border-radius: 20px;
-  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
-  border: none;
-  transition: all 0.2s ease-in-out;
-}
-
-.form .login-button:hover {
-  transform: scale(1.03);
-  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;
-}
-
-.form .login-button:active {
-  transform: scale(0.95);
-  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
-}
-
-.social-account-container {
-  margin-top: 25px;
-}
-
-.social-account-container .title {
-  display: block;
-  text-align: center;
-  font-size: 10px;
-  color: rgb(170, 170, 170);
-}
-
-.social-account-container .social-accounts {
-  width: 100%;
+  position: relative;
   display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 5px;
-}
-
-.social-account-container .social-accounts .social-button {
-  background: linear-gradient(45deg, rgb(0, 0, 0) 0%, rgb(112, 112, 112) 100%);
-  border: 5px solid white;
-  padding: 5px;
-  border-radius: 50%;
-  width: 40px;
-  aspect-ratio: 1;
-  display: grid;
-  place-content: center;
-  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 12px 10px -8px;
-  transition: all 0.2s ease-in-out;
-}
-
-.social-account-container .social-accounts .social-button .svg {
-  fill: white;
-  margin: auto;
-}
-
-.social-account-container .social-accounts .social-button:hover {
-  transform: scale(1.2);
-}
-
-.social-account-container .social-accounts .social-button:active {
-  transform: scale(0.9);
-}
-
-.agreement {
-  display: block;
+  flex-direction: column;
+  padding: 32px 24px 24px;
+  gap: 16px;
   text-align: center;
-  margin-top: 15px;
 }
 
-.agreement a {
-  text-decoration: none;
-  color: #0099ff;
-  font-size: 9px;
+/*Form text*/
+.title {
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+/*Inputs box*/
+.form-container {
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #fff;
+  margin: 1rem 0 .5rem;
+  width: 100%;
+}
+
+.input {
+  background: none;
+  border: 0;
+  outline: 0;
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  font-size: .9rem;
+  padding: 8px 15px;
+}
+
+.form-section {
+  padding: 16px;
+  font-size: .85rem;
+  background-color: #e0ecfb;
+  box-shadow: rgb(0 0 0 / 8%) 0 -1px;
+}
+
+.form-section a {
+  font-weight: bold;
+  color: #0066ff;
+  transition: color .3s ease;
+}
+
+.form-section a:hover {
+  color: #005ce6;
+  text-decoration: underline;
+}
+
+/*Button*/
+.form button {
+  background-color: #0066ff;
+  color: #fff;
+  border: 0;
+  border-radius: 24px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .3s ease;
+}
+
+.form button:hover {
+  background-color: #005ce6;
 }

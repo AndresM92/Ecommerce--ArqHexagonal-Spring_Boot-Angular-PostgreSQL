@@ -1,0 +1,15 @@
+<ng-container [ngSwitch]="role">
+
+    <ng-container *ngSwitchCase="'ADMIN'">
+        <app-header-admin></app-header-admin>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'USER'">
+        <app-header-user></app-header-user>
+    </ng-container>
+
+    <ng-container *ngSwitchDefault>
+        <app-header-default></app-header-default>
+    </ng-container>
+    
+</ng-container>

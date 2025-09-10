@@ -30,13 +30,13 @@ export class LoginComponent implements OnInit {
         console.log(token);
         this.sessionStorage.setItem('token',token);
         if(token.type=="ADMIN"){
+          this.authenticationService.setUserRole(token.type);
           this.router.navigate(["/admin/product"]);
         }else{
+          this.authenticationService.setUserRole(token.type);
           this.router.navigate(["/"]);
         }
       }
-
-      
     );
   }
 

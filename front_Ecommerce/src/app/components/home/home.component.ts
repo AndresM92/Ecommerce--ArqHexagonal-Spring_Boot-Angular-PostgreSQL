@@ -22,4 +22,10 @@ export class HomeComponent implements OnInit{
     );
   }
 
+    addToCart(id: number) {
+  
+ 
+  
+    }
+
 }
